@@ -2,23 +2,38 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import { useState } from 'react';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import { useEffect, useState } from 'react';
 
 const Contribute = () => {
     const [data, setData] = useState("");
-    const [isFake, setIsFake] = useState(false);
+    const [radioValue, setRadioValue] = useState('fact');
+
+    const radios = [
+        { name: 'Fact', value: 'fact' },
+        { name: 'Fake', value: 'fake' },
+      ];
+
 
     const handleOnChange = (event) => {
         setData(event.target.value);
     }
 
-    const handleOnClickFake = (event) => {
-        setIsFake(!isFake);
+    const handleOnChangeRadio = (event) => {
+        setRadioValue(event.currentTarget.value);
     }
 
     const handleSubmit = (event) =>{
         event.preventDefault();
 
+        let isFake = false;
+        if (radioValue == "fact") {
+            isFake = false;
+        }
+        else if (radioValue == "fake") {
+            isFake = true;
+        }
        
         const info = { 
             text: data, 
@@ -45,7 +60,7 @@ const Contribute = () => {
                             <Card.Body>
                                 <Card.Title>Contribute!</Card.Title>
                                 <Form onSubmit={handleSubmit}>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Group className="mb-3">
                                         <Form.Label htmlFor="inputData">Data</Form.Label>
                                         <Form.Control
                                             type="text"
@@ -59,7 +74,7 @@ const Contribute = () => {
                                         </Form.Text>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                                         <Form.Check 
                                             type="switch"
                                             id="custom-switch"
@@ -67,7 +82,26 @@ const Contribute = () => {
                                             value={isFake}
                                             onClick={handleOnClickFake}
                                         />
-                                    </Form.Group>
+                                    </Form.Group> */}
+
+                                    <ButtonGroup>
+                                        {radios.map((radio, idx) => (
+                                        <ToggleButton
+                                            key={idx}
+                                            id={`radio-${idx}`}
+                                            type="radio"
+                                            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                                            name="radio"
+                                            value={radio.value}
+                                            checked={radioValue === radio.value}
+                                            onChange={handleOnChangeRadio}
+                                        >
+                                            {radio.name}
+                                        </ToggleButton>
+                                        ))}
+                                    </ButtonGroup>
+
+                                    <br />
 
                                     <Button variant="primary" type="submit">
                                         Submit Contribution
