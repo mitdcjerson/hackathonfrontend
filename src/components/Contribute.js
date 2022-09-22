@@ -3,8 +3,9 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card, Col, Container, Row, Alert, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
-const Contribute = () => {
+const Contribute = (props) => {
     const alertObj = {
         type: "",
         message: ""
@@ -104,6 +105,11 @@ const Contribute = () => {
 
     return (
         <div className="form-container">
+
+            {
+                !props.isLoggedIn ? <Navigate to="/login" replace /> : ""
+            }  
+
             <Container>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Card className="mt-5">

@@ -23,7 +23,7 @@ function App() {
         <Route path="/home" element={<Navigate to="/" replace />} />
         {/* <Route path="/doctor/:id" element={<DoctorProfile doctorId={doctor.id} doctorName={doctor.name}/>} /> */}
         <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/contribute" element={<Contribute />} />
+        <Route path="/contribute" element={<Contribute isLoggedIn={isLoggedIn}/>} />
       </Routes>
     
     </>
