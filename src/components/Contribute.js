@@ -54,12 +54,15 @@ const Contribute = () => {
     return (
         <div className="form-container">
             <Container>
-                <Row>
-                    <Col md={{ span: 6, offset: 3 }}>
-                        <Card className="mt-5">
-                            <Card.Body>
-                                <Card.Title>Contribute!</Card.Title>
-                                <Form onSubmit={handleSubmit}>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Card className="mt-5">
+                        <Card.Body>
+                            <Form onSubmit={handleSubmit}>
+                                <Row className='mb-2'>
+                                    <Card.Title>Contribute!</Card.Title>
+                                </Row>
+
+                                <Row className='mb-2'>
                                     <Form.Group className="mb-3">
                                         <Form.Label htmlFor="inputData">Data</Form.Label>
                                         <Form.Control
@@ -73,7 +76,9 @@ const Contribute = () => {
                                             Enter a phrase you want to classify as fake or not.
                                         </Form.Text>
                                     </Form.Group>
+                                </Row>
 
+                                <Row className='mb-5'>
                                     <ButtonGroup>
                                         {radios.map((radio, idx) => (
                                         <ToggleButton
@@ -90,19 +95,17 @@ const Contribute = () => {
                                         </ToggleButton>
                                         ))}
                                     </ButtonGroup>
+                                </Row>
 
-                                    <br />
-                                    <br />
-
+                                <Row>
                                     <Button variant="primary" type="submit"  style={{backgroundColor: "#0E4456"}}>
                                         Submit Contribution
                                     </Button>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                </Row>
-                
+                                </Row>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
             </Container>
         </div>
     );
