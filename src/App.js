@@ -15,13 +15,13 @@ function App() {
 
   const renderPage = (page) => {
     
-    if (page == "home") {
+    if (page === "home") {
       return <Home />
     }
-    else if (page == "contribute") {
+    else if (page === "contribute") {
       return <Contribute />
     }
-    else if (page == "login") {
+    else if (page === "login") {
       return <Login />
     }
 
