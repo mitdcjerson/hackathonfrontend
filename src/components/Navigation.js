@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 function Navigation(props) {
 
+  function handleLoginChange() {
+    props.setIsLoggedIn(props.isLoggedIn);
+  }
+
   return (
     <>
       <Navbar  variant="dark" style={{backgroundColor: "#0E4456"}}>
@@ -23,7 +27,7 @@ function Navigation(props) {
 
             </Nav>
             <Navbar.Collapse className="justify-content-end">
-              <Nav.Link href="#login" className='text-white'><Link to={`/login`} className="nav-link">Login</Link></Nav.Link>
+              <Nav.Link href="#login" className='text-white'><Link to={`/login`} className="nav-link" onClick={handleLoginChange}>{ props.isLoggedIn ? "Logout" : "Login" }</Link></Nav.Link>
             </Navbar.Collapse>
         </Container>
       </Navbar>
