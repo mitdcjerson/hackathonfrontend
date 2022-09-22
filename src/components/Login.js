@@ -3,23 +3,26 @@ import { useState } from "react";
 
 function Login() {
 
-    const [name, setName] = useState([]);
-    const [password, setPassword] = useState([]);
-    
-    // function validateForm(){
-    //     return name.length > 0 && password.length > 0;
-    // }
+    const [uName, setUsername] = useState([]);
+    const [pass, setPassword] = useState([]);
     
     function handleOnSubmit(event){
         event.preventDefault();
+
+        const userData = {
+            username: uName,
+            password: pass
+        };
+        console.log("User login", userData);
 
         fetch("http://localhost:3002/users", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(userData)
         }).then(() => {
-            console.log("Login success");
+            console.log("Login ", userData);
         })
 
     };
@@ -33,12 +36,12 @@ function Login() {
                         <Form onSubmit={handleOnSubmit}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
-                                <Form.Control className="mb-3" type="text" placeholder="Username" value={name} onChange={(e) => setName(e.target.value)}/>
+                                <Form.Control className="mb-3" type="text" placeholder="Username" value={uName} onChange={(e) => setUsername(e.target.value)}/>
                             </Form.Group>
 
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control className="mb-3" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                                <Form.Control className="mb-3" type="password" placeholder="Password" value={pass} onChange={(e) => setPassword(e.target.value)}/>
                             </Form.Group>
                             
                             <Button variant="primary w-100" type="submit">Sign In</Button>
