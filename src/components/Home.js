@@ -28,7 +28,7 @@ function Home() {
         console.log("Topic requested.");
         console.log(topicObj);
         console.log(result);
-        setStatus(result.status);
+        setStatus(result);
     })
 
 
@@ -37,17 +37,17 @@ function Home() {
 
   const renderStatus = (status) => {
     
-    if (status === "UNCERTAIN") {
+    if (status.status === "UNCERTAIN") {
       return (
         <Status stat={status}/>
       )
     }
-    else if (status ==="FACT") {
+    else if (status.status ==="FACT") {
       return (
         <Status stat={status}/>
       )
     }
-    else if (status === "FAKE") {
+    else if (status.status === "FAKE") {
       return (
         <Status stat={status}/>
       )

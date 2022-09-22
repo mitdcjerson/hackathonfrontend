@@ -18,32 +18,32 @@ const Status = (props) => {
     };
 
     const displayStatMessage = (status) => {
-        if (status == "FACT") {
+        if (status.status == "FACT") {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-success d-inline'>Fact</div></Card.Title>
                     <Card.Text className='fs-1 fw-bold text-success'>
-                        59%
+                        {status.result.toFixed(2)}%
                     </Card.Text>
                 </>
             );
         }
-        else if (status == "FAKE") {
+        else if (status.status == "FAKE") {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-danger d-inline'>Fake</div></Card.Title>
                     <Card.Text className='fs-1 fw-bold text-danger'>
-                        59%
+                        {status.result.toFixed(2)}%
                     </Card.Text>
                 </>
             );
         }
-        else if (status == "UNCERTAIN") {
+        else if (status.status == "UNCERTAIN") {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-warning d-inline'>Uncertain</div></Card.Title>
                     <Card.Text className='fs-1 fw-bold text-warning'>
-                        59%
+                        {status.result.toFixed(2)}%
                     </Card.Text>
                 </>
             );
@@ -59,7 +59,7 @@ const Status = (props) => {
                         <Card.Body>
                         <Row>
                             <Col>
-                                <img src={displayStatImage(props.stat)} style={{width: "100%"}}/>
+                                <img src={displayStatImage(props.stat.status)} style={{width: "100%"}}/>
                             </Col>
                             <Col className='my-auto text-center'>
                                 {displayStatMessage(props.stat)}
