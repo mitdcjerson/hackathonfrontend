@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Navigation setPage={setPage}/>
+      <Navigation />
 
       <Routes>
         <Route path="/" element={<Home />} />
