@@ -4,14 +4,97 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import check from "../assets/verified.svg";
 import nodata from "../assets/no-data.svg";
+import uncertain from "../assets/no-data.svg";
 
 function Home() {
   const [ isFake, setIsFake] = useState();
+  const data = {result: 48, status: "FACT"};
+
+  const [status, setStatus] = useState(data.status);
+
 
   function handleSubmit(){
     setIsFake(Math.round(Math.random() * 1));
     console.log("Fake", isFake)
   }
+
+
+  const renderStatus = (status) => {
+    
+    if (status === "UNCERTAIN") {
+      return (
+        <Container>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+              <Card className="mt-5">
+                <Card.Body>
+                  <Row>
+                    <Col>
+                      <img src={uncertain} style={{width: "100%"}}/>
+                    </Col>
+                    <Col className='my-auto text-center'>
+                      <Card.Title>Status: <div className='fw-bold text-warning d-inline'>Uncertain</div></Card.Title>
+                    </Col>
+                  </Row>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      )
+    }
+    else if (status ==="FACT") {
+      return (
+        <Container>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+            <Card className="mt-5">
+              <Card.Body>
+              <Row>
+                <Col>
+                  <img src={check} style={{width: "100%"}}/>
+                </Col>
+                <Col className='my-auto text-center'>
+                <Card.Title>Status: <div className='fw-bold text-success d-inline'>Fact</div></Card.Title>
+                  <Card.Text className='fs-1 fw-bold text-success'>
+                    59%
+                  </Card.Text>
+                </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            </Col>
+            </Row>
+        </Container>
+      )
+    }
+    else if (status === "FAKE") {
+      return (
+        <Container>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
+              <Card className="mt-5">
+                <Card.Body>
+                  <Row>
+                    <Col>
+                      <img src={nodata} style={{width: "100%"}}/>
+                    </Col>
+                    <Col className='my-auto text-center'>
+                    <Card.Title>Status: <div className='fw-bold text-danger d-inline'>Fake</div></Card.Title>
+                      <Card.Text className='fs-1 fw-bold text-danger'>
+                        47%
+                      </Card.Text>
+                    </Col>
+                  </Row>
+                </Card.Body>
+            </Card>
+            </Col>
+            </Row>
+        </Container>
+      )
+    }
+
+  };
 
   return (
     <>
@@ -22,7 +105,7 @@ function Home() {
             <Card.Body>
               <Card.Title>Topic</Card.Title>
               <Form>
-                <Form.Control className="mb-3" type="text" placeholder="Running 5km" />
+                <Form.Control className="mb-3" type="text" placeholder="Enter a phrase" />
                 <Button variant="primary w-100" onClick={handleSubmit} style={{backgroundColor: "#0E4456"}}>
                   Submit
                 </Button>
@@ -34,51 +117,11 @@ function Home() {
       
         
     </Container>
-    <Container>
-    <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-    {/* <Container className="d-none"> */}
-      {
-        isFake ?
-        <Card className="mt-5">
-        <Card.Body>
-        <Row>
-          <Col>
-            <img src={check} style={{width: "100%"}}/>
-          </Col>
-          <Col className='my-auto'>
-            <Card.Title>Its True</Card.Title>
-            <Card.Text muted>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-          </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-      :
-      <Card className="mt-5">
-        <Card.Body>
-        <Row>
-          <Col>
-            <img src={nodata} style={{width: "100%"}}/>
-          </Col>
-          <Col className='my-auto'>
-          <Card.Title>Its Fake</Card.Title>
-          <Card.Text muted>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-      }
-      </Col>
-      </Row>
-      
-    
-  </Container>
+   
+    {
+      renderStatus(status)
+    }
+
   </>
   );
 }
