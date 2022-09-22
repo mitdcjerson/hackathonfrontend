@@ -1,12 +1,31 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Contribution from './components/Contribution';
+import Navigation from './components/Navigation';
+import Home from './components/Home';
 
 function App() {
   return (
-    <div className="App">
-      <Contribution />
-    </div>
+    <>
+    <Navigation/>
+    <Home/>
+    </>
+    // <div className="App">
+    //   <header className="App-header">
+    //     <img src={logo} className="App-logo" alt="logo" />
+    //     <p>
+    //       Edit <code>src/App.js</code> and save to reload.
+    //     </p>
+    //     <a
+    //       className="App-link"
+    //       href="https://reactjs.org"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //     >
+    //       Learn React
+    //     </a>
+    //   </header>
+    // </div>
   );
 }
 
