@@ -12,15 +12,17 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <>
-      <Navigation />
+      <Navigation isLoggedIn={isLoggedIn} />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace />} />
         {/* <Route path="/doctor/:id" element={<DoctorProfile doctorId={doctor.id} doctorName={doctor.name}/>} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/contribute" element={<Contribute />} />
       </Routes>
     

@@ -1,7 +1,8 @@
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 
-function Login() {
+function Login(props) {
 
     const [uName, setUsername] = useState([]);
     const [pass, setPassword] = useState([]);
@@ -25,10 +26,15 @@ function Login() {
             console.log("Login ", userData);
         })
 
+        props.setIsLoggedIn(true);
     };
 
     return(
         <div className="form-container">
+            {
+                props.isLoggedIn ? <Navigate to="/contribute" replace /> : ""
+            }   
+
             <Container>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
