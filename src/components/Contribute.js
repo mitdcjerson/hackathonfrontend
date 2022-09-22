@@ -96,7 +96,7 @@ const Contribute = () => {
                 console.log(info);
                 setData("");
                 setRadioValue("");
-                setAlert({ type: "success", message: "New contribution added!" });
+                setAlert({ type: "success", message: "Contribution added!" });
             })
         }
 

@@ -15,14 +15,14 @@ function Navigation(props) {
     <>
       <Navbar  variant="dark" style={{backgroundColor: "#0E4456"}}>
         <Container>
-          <Navbar.Brand href="#home"><Link to={`/home`} className="nav-link"><img src={logo} class="image" /></Link></Navbar.Brand>
+          <Link to={`/home`} className="nav-link"><img src={logo} class="image" /></Link>
             <Nav className="me-auto">
-              <Nav.Link href="#home"><Link to={`/home`} className="nav-link">Home</Link></Nav.Link>
+              <Link to={`/home`} className="nav-link">Home</Link>
 
               {
                 props.isLoggedIn
                   ?
-                    <Nav.Link href="#features"><Link to={`/contribute`} className="nav-link">Contribute</Link></Nav.Link>
+                    <Link to={`/contribute`} className="nav-link">Contribute</Link>
                   :
                     ""
               }
