@@ -1,18 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< HEAD
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { useState } from 'react';
-import "./Contribute.css"
-=======
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useEffect, useState } from 'react';
->>>>>>> main
 
 const Contribute = () => {
     const [data, setData] = useState("");
