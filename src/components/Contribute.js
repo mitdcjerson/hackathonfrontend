@@ -4,30 +4,37 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState } from 'react';
 
 const Contribute = () => {
+    const [data, setData] = useState("");
+    const [isFake, setIsFake] = useState(false);
+
+    const handleOnChange = (event) => {
+        setData(event.target.value);
+    }
+
+    const handleOnClickFake = (event) => {
+        setIsFake(!isFake);
+    }
 
     const handleSubmit = (event) =>{
         event.preventDefault();
 
         console.log("POST! Added Contribution.")
-        // const post = { 
-        //     text, 
-        //     result, 
-        //     author_id: userId,
-        //     author: props.user.username,
-        //     category, 
-        //     isAnonPost 
-        // };
+        const info = { 
+            text: data, 
+            type: isFake ? 0 : 1
+        };
 
-        // fetch("http://localhost:3002/infos", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(post)
-        // }).then(() => {
-        //     console.log("New post added");
-        //     setIsPending(false);
-        // })
+        fetch("http://localhost:3002/infos", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(info)
+        }).then(() => {
+            console.log("New contribution added!");
+            console.log(info);
+        })
 
     };
 
@@ -44,6 +51,8 @@ const Contribute = () => {
                                     type="text"
                                     id="inputData"
                                     aria-describedby="dataHelpBlock"
+                                    value={data}
+                                    onChange={handleOnChange}
                                 />
                                 <Form.Text id="dataHelpBlock" muted>
                                     Enter a phrase you want to classify as fake or not.
@@ -55,6 +64,8 @@ const Contribute = () => {
                                     type="switch"
                                     id="custom-switch"
                                     label="Fake"
+                                    value={isFake}
+                                    onClick={handleOnClickFake}
                                 />
                             </Form.Group>
 
