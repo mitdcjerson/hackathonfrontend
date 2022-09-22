@@ -12,22 +12,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
 
-  const [page, setPage] = useState("home");
-
-  const renderPage = (page) => {
-    
-    if (page === "home") {
-      return <Home />
-    }
-    else if (page === "contribute") {
-      return <Contribute />
-    }
-    else if (page === "login") {
-      return <Login />
-    }
-
-  };
-
   return (
     <>
       <Navigation setPage={setPage}/>
