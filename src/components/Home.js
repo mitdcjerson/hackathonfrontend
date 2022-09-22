@@ -6,16 +6,14 @@ import Status from './Status';
 
 function Home() {
   const [ topic, setTopic ] = useState("");
-  const data = {result: 48, status: "UNCERTAIN"};
-
-  const [status, setStatus] = useState(data.status);
+  const [status, setStatus] = useState("");
 
   const handleOnChange = (event) => {
     setTopic(event.target.value);
   }
 
   function handleSubmit(){
-    
+
     const topicObj = {
       text: topic
     };
@@ -53,6 +51,9 @@ function Home() {
       return (
         <Status stat={status}/>
       )
+    }
+    else {
+      return;
     }
 
   };
