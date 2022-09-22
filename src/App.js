@@ -15,13 +15,13 @@ function App() {
 
   const renderPage = (page) => {
     
-    if (page == "home") {
+    if (page === "home") {
       return <Home />
     }
-    else if (page == "contribute") {
+    else if (page === "contribute") {
       return <Contribute />
     }
-    else if (page == "login") {
+    else if (page === "login") {
       return <Login />
     }
 
@@ -34,22 +34,6 @@ function App() {
         renderPage(page)
       }
     </>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
 
   );
 }

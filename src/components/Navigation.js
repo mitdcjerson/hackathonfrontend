@@ -18,10 +18,8 @@ function Navigation(props) {
               <Nav.Link href="#features" onClick={() => handleOnClick("contribute")}>Contribute</Nav.Link>
             </Nav>
             <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              Signed in as: <a href="#login" onClick={() => handleOnClick("login")}>Mark Otto</a>
-            </Navbar.Text>
-          </Navbar.Collapse>
+              <Nav.Link href="#login" className='text-white' onClick={() => handleOnClick("login")}>Login</Nav.Link>
+            </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
