@@ -7,10 +7,12 @@ import nodata from "../assets/no-data.svg";
 
 function Home() {
   const [ isFake, setIsFake] = useState();
+
   function handleSubmit(){
     setIsFake(Math.round(Math.random() * 1));
     console.log("Fake", isFake)
   }
+
   return (
     <>
     <Container>
@@ -21,7 +23,7 @@ function Home() {
               <Card.Title>Topic</Card.Title>
               <Form>
                 <Form.Control className="mb-3" type="text" placeholder="Running 5km" />
-                <Button variant="primary w-100" type="submit" onClick={handleSubmit} style={{backgroundColor: "#0E4456"}}>
+                <Button variant="primary w-100" onClick={handleSubmit} style={{backgroundColor: "#0E4456"}}>
                   Submit
                 </Button>
               </Form>
