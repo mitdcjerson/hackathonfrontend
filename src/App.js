@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import Contribution from './components/Contribution';
+import Contribution from './components/Contribute';
 
 function App() {
   return (
