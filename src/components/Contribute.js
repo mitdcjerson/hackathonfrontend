@@ -1,20 +1,36 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
+import { Card, Col, Container, Row, Alert, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
 const Contribute = () => {
+    const alertObj = {
+        type: "",
+        message: ""
+    };
+
     const [data, setData] = useState("");
-    const [radioValue, setRadioValue] = useState('fact');
+    const [radioValue, setRadioValue] = useState("");
+    const [alert, setAlert] = useState(alertObj);
+    const [showAlert, setShowAlert] = useState("");
 
     const radios = [
         { name: 'Fact', value: 'fact' },
         { name: 'Fake', value: 'fake' },
       ];
 
+    useEffect(() => {
+        const timeId = setTimeout(() => {
+            setShowAlert("d-none");
+            console.log("USE EFFECT");
+        }, 2000)
+    
+        return () => {
+        clearTimeout(timeId)
+        setShowAlert("");
+        }
+    }, [alert]);
 
     const handleOnChange = (event) => {
         setData(event.target.value);
@@ -24,30 +40,65 @@ const Contribute = () => {
         setRadioValue(event.currentTarget.value);
     }
 
+    const renderAlert = (alertParam) => {
+        if (alertParam.type == "error") {
+            return (
+                <Alert variant="danger" className={`mt-3 ${showAlert}`}>
+                    {alertParam.message}
+                </Alert>
+            );
+        }
+        else if (alertParam.type == "success") {
+            return (
+                <Alert variant="info" className={`mt-3 ${showAlert}`}>
+                    {alertParam.message}
+                </Alert>
+            );
+        }
+    };
+
     const handleSubmit = (event) =>{
         event.preventDefault();
 
-        let isFake = false;
-        if (radioValue == "fact") {
+        let error = false;
+        let isFake = null;
+
+        
+        if (radioValue == "fact" && data != null) {
             isFake = false;
         }
-        else if (radioValue == "fake") {
+        else if (radioValue == "fake" && data != null) {
             isFake = true;
         }
-       
+        else {
+            error = true;
+            console.log("Please identify if data is Fact or Fake.");
+            setAlert({ type: "error", message: "Please identify if data is Fact or Fake." });
+        }
+        
+        if (!data) {
+            error = true;
+            console.log("Please input data.");
+            setAlert({ type: "error", message: "Please input data." });
+        }
         const info = { 
             text: data, 
             type: isFake ? 0 : 1
         };
 
-        fetch("http://localhost:3002/infos", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(info)
-        }).then(() => {
-            console.log("New contribution added!");
-            console.log(info);
-        })
+        if (!error) {
+            fetch("http://localhost:3002/infos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(info)
+            }).then(() => {
+                console.log("New contribution added!");
+                console.log(info);
+                setData("");
+                setRadioValue("");
+                setAlert({ type: "success", message: "New contribution added!" });
+            })
+        }
 
     };
 
@@ -73,7 +124,7 @@ const Contribute = () => {
                                             onChange={handleOnChange}
                                         />
                                         <Form.Text id="dataHelpBlock" muted>
-                                            Enter a phrase you want to classify as fake or not.
+                                            Enter a phrase you want to classify as fact or fake.
                                         </Form.Text>
                                     </Form.Group>
                                 </Row>
@@ -105,6 +156,11 @@ const Contribute = () => {
                             </Form>
                         </Card.Body>
                     </Card>
+
+                    {
+                        renderAlert(alert)
+                    }
+                    
                 </Col>
             </Container>
         </div>
