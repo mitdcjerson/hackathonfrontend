@@ -1,4 +1,4 @@
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import { useState } from "react";
 
 function Login() {
@@ -30,24 +30,28 @@ function Login() {
     return(
         <div className="form-container">
             <Container>
-                <Card>
-                    <Card.Body>
-                        <Card.Title>Login</Card.Title>
-                        <Form onSubmit={handleOnSubmit}>
-                            <Form.Group>
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control className="mb-3" type="text" placeholder="Username" value={uName} onChange={(e) => setUsername(e.target.value)}/>
-                            </Form.Group>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+                    <Card className="mt-5">
+                        <Card.Body>
+                            <Card.Title>Login</Card.Title>
+                            <Form onSubmit={handleOnSubmit}>
+                                <Form.Group>
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control className="mb-3" type="text" placeholder="Username" value={uName} onChange={(e) => setUsername(e.target.value)}/>
+                                </Form.Group>
 
-                            <Form.Group>
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control className="mb-3" type="password" placeholder="Password" value={pass} onChange={(e) => setPassword(e.target.value)}/>
-                            </Form.Group>
-                            
-                            <Button variant="primary w-100" type="submit">Sign In</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
+                                <Form.Group>
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control className="mb-3" type="password" placeholder="Password" value={pass} onChange={(e) => setPassword(e.target.value)}/>
+                                </Form.Group>
+                                
+                                <Button variant="primary w-100" type="submit" style={{backgroundColor: "#0E4456"}}>Sign In</Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                    </Col>
+                </Row>
             </Container>
         </div>
     );
