@@ -74,23 +74,13 @@ const Contribute = () => {
                                         </Form.Text>
                                     </Form.Group>
 
-                                    {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                        <Form.Check 
-                                            type="switch"
-                                            id="custom-switch"
-                                            label="Fake"
-                                            value={isFake}
-                                            onClick={handleOnClickFake}
-                                        />
-                                    </Form.Group> */}
-
                                     <ButtonGroup>
                                         {radios.map((radio, idx) => (
                                         <ToggleButton
                                             key={idx}
                                             id={`radio-${idx}`}
                                             type="radio"
-                                            variant={idx % 2 ? 'outline-success' : 'outline-danger'}
+                                            variant={idx % 2 ? 'outline-danger' : 'outline-success'}
                                             name="radio"
                                             value={radio.value}
                                             checked={radioValue === radio.value}
@@ -101,6 +91,7 @@ const Contribute = () => {
                                         ))}
                                     </ButtonGroup>
 
+                                    <br />
                                     <br />
 
                                     <Button variant="primary" type="submit">
