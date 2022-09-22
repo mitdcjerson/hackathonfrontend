@@ -21,7 +21,7 @@ const Contribute = () => {
     const handleSubmit = (event) =>{
         event.preventDefault();
 
-        console.log("POST! Added Contribution.")
+       
         const info = { 
             text: data, 
             type: isFake ? 0 : 1
