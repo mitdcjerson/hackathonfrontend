@@ -1,24 +1,21 @@
 import { Nav } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from "react-router-dom";
 
-function Navigation(props) {
-
-  const handleOnClick = (page) => {
-    props.setPage(page);
-  };
+function Navigation() {
 
   return (
     <>
       <Navbar  variant="dark" style={{backgroundColor: "#0E4456"}}>
         <Container>
-          <Navbar.Brand href="#home">LOGO</Navbar.Brand>
+          <Navbar.Brand href="#home"><Link to={`/home`} className="nav-link">LOGO</Link></Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#home" onClick={() => handleOnClick("home")}>Home</Nav.Link>
-              <Nav.Link href="#features" onClick={() => handleOnClick("contribute")}>Contribute</Nav.Link>
+              <Nav.Link href="#home"><Link to={`/home`} className="nav-link">Home</Link></Nav.Link>
+              <Nav.Link href="#features"><Link to={`/contribute`} className="nav-link">Contribute</Link></Nav.Link>
             </Nav>
             <Navbar.Collapse className="justify-content-end">
-              <Nav.Link href="#login" className='text-white' onClick={() => handleOnClick("login")}>Login</Nav.Link>
+              <Nav.Link href="#login" className='text-white'><Link to={`/login`} className="nav-link">Login</Link></Nav.Link>
             </Navbar.Collapse>
         </Container>
       </Navbar>

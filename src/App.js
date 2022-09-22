@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import Home from './components/Home';
 import { useState } from 'react';
 import { render } from '@testing-library/react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 
 function App() {
@@ -29,10 +30,16 @@ function App() {
 
   return (
     <>
-    <Navigation setPage={setPage}/>
-      {
-        renderPage(page)
-      }
+      <Navigation setPage={setPage}/>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        {/* <Route path="/doctor/:id" element={<DoctorProfile doctorId={doctor.id} doctorName={doctor.name}/>} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/contribute" element={<Contribute />} />
+      </Routes>
+    
     </>
 
   );
