@@ -29,9 +29,6 @@ function App() {
 
   return (
     <>
-
-    <Navigation/>
-    <Home/>
     <Navigation setPage={setPage}/>
       {
         renderPage(page)
