@@ -1,9 +1,15 @@
+import { useState } from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import check from "../assets/verified.svg";
 
 function Home() {
+  const [ isFake, setIsFake] = useState();
+  function handleSubmit(){
+    setIsFake(Math.round(Math.random() * 1));
+    console.log("Fake", isFake)
+  }
   return (
     <>
     <Container>
@@ -12,7 +18,7 @@ function Home() {
           <Card.Title>Topic</Card.Title>
           <Form>
             <Form.Control className="mb-3" type="text" placeholder="Running 5km" />
-            <Button variant="primary w-100" type="submit" style={{backgroundColor: "#0E4456"}}>
+            <Button variant="primary w-100" type="submit" onClick={handleSubmit} style={{backgroundColor: "#0E4456"}}>
               Submit
             </Button>
           </Form>
@@ -20,6 +26,7 @@ function Home() {
       </Card>  
         
     </Container>
+    {/* <Container className={ isFake ? "d-none" : ""}> */}
     <Container className="d-none">
     
       <Card className="mt-5">
