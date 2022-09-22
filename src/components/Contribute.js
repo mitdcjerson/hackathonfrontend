@@ -1,9 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useState } from 'react';
 
 const Contribute = () => {
@@ -41,38 +39,42 @@ const Contribute = () => {
     return (
         <div className="form-container">
             <Container>
-                <Row className="justify-content-md-center">
-                    <Col sm={4}>
-                        <h2>Contribute!</h2>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label htmlFor="inputData">Data</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    id="inputData"
-                                    aria-describedby="dataHelpBlock"
-                                    value={data}
-                                    onChange={handleOnChange}
-                                />
-                                <Form.Text id="dataHelpBlock" muted>
-                                    Enter a phrase you want to classify as fake or not.
-                                </Form.Text>
-                            </Form.Group>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+                        <Card className="mt-5">
+                            <Card.Body>
+                                <Card.Title>Contribute!</Card.Title>
+                                <Form onSubmit={handleSubmit}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                        <Form.Label htmlFor="inputData">Data</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            id="inputData"
+                                            aria-describedby="dataHelpBlock"
+                                            value={data}
+                                            onChange={handleOnChange}
+                                        />
+                                        <Form.Text id="dataHelpBlock" muted>
+                                            Enter a phrase you want to classify as fake or not.
+                                        </Form.Text>
+                                    </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                <Form.Check 
-                                    type="switch"
-                                    id="custom-switch"
-                                    label="Fake"
-                                    value={isFake}
-                                    onClick={handleOnClickFake}
-                                />
-                            </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                        <Form.Check 
+                                            type="switch"
+                                            id="custom-switch"
+                                            label="Fake"
+                                            value={isFake}
+                                            onClick={handleOnClickFake}
+                                        />
+                                    </Form.Group>
 
-                            <Button variant="primary" type="submit">
-                                Submit Contribution
-                            </Button>
-                        </Form>
+                                    <Button variant="primary" type="submit">
+                                        Submit Contribution
+                                    </Button>
+                                </Form>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 </Row>
                 
