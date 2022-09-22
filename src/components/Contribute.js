@@ -94,7 +94,7 @@ const Contribute = () => {
                                     <br />
                                     <br />
 
-                                    <Button variant="primary" type="submit">
+                                    <Button variant="primary" type="submit"  style={{backgroundColor: "#0E4456"}}>
                                         Submit Contribution
                                     </Button>
                                 </Form>
