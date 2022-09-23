@@ -1,7 +1,7 @@
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import check from "../assets/verified.svg";
 import nodata from "../assets/no-data.svg";
-import uncertain from "../assets/no-data.svg";
+import uncertain from "../assets/uncertain.svg";
 import { FACTS, FAKE, UNCERTAIN } from "../constants";
 
 const Status = (props) => {
@@ -22,30 +22,41 @@ const Status = (props) => {
         if (status.status == FACTS) {
             return(
                 <>
-                    <Card.Title>Status: <div className='fw-bold text-success d-inline'>Fact</div></Card.Title>
-                    <Card.Text className='fs-1 fw-bold text-success'>
-                        {status.result.toFixed(2)}%
+                    <Card.Text className='fs-5 fw-bold'>
+                        {`I am `} 
+                        <span className='fs-3 text-success'>
+                            {status.result.toFixed(2)}%
+                        </span>
+                        {` confident`}
                     </Card.Text>
+                    <Card.Text className='fs-5'>that this is a <div className='fs-4 fw-bold text-success d-inline'>Fact</div></Card.Text>
                 </>
             );
         }
         else if (status.status == FAKE) {
             return(
                 <>
-                    <Card.Title>Status: <div className='fw-bold text-danger d-inline'>Fake</div></Card.Title>
-                    <Card.Text className='fs-1 fw-bold text-danger'>
-                        {status.result.toFixed(2)}%
+                    <Card.Text className='fs-5 fw-bold'>
+                        {`I am `} 
+                        <span className='fs-3 text-danger'>
+                            {status.result.toFixed(2)}%
+                        </span>
+                        {` confident`}
                     </Card.Text>
+                    <Card.Text className='fs-5'>that this is <div className='fs-4 fw-bold text-danger d-inline'>Fake</div></Card.Text>
                 </>
             );
         }
         else if (status.status == UNCERTAIN) {
             return(
                 <>
-                    <Card.Title>Status: <div className='fw-bold text-warning d-inline'>Uncertain</div></Card.Title>
-                    <Card.Text className='fs-1 fw-bold text-warning'>
-                        {status.result.toFixed(2)}%
+                    <Card.Text className='fs-5 fw-bold'>
+                        {`I am `} 
+                        <span className='fs-3 text-warning'>
+                            Uncertain
+                        </span>
                     </Card.Text>
+                    <Card.Text className='fs-5'>about this one.</Card.Text>
                 </>
             );
         }
