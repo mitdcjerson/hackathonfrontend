@@ -2,6 +2,7 @@ import { Alert, Button, Card, Col, Container, Form, Row } from "react-bootstrap"
 import { useState } from "react";
 import { Navigate } from 'react-router-dom';
 import '../App.css';
+const sha256 = require('js-sha256');
 
 function Login(props) {
 
@@ -16,7 +17,7 @@ function Login(props) {
     async function loginUser(credentials) {
         const userData = {
             username: uName,
-            password: pass
+            password: sha256(pass)
         };
         console.log("User login", userData);
 
