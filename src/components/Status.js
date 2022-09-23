@@ -2,23 +2,24 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import check from "../assets/verified.svg";
 import nodata from "../assets/no-data.svg";
 import uncertain from "../assets/no-data.svg";
+import { FACTS, FAKE, UNCERTAIN } from "../constants";
 
 const Status = (props) => {
 
     const displayStatImage = (status) => {
-        if (status == "FACT") {
+        if (status == FACTS) {
             return check;
         }
-        else if (status == "FAKE") {
+        else if (status == FAKE) {
             return nodata;
         }
-        else if (status == "UNCERTAIN") {
+        else if (status == UNCERTAIN) {
             return uncertain;
         }
     };
 
     const displayStatMessage = (status) => {
-        if (status.status == "FACT") {
+        if (status.status == FACTS) {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-success d-inline'>Fact</div></Card.Title>
@@ -28,7 +29,7 @@ const Status = (props) => {
                 </>
             );
         }
-        else if (status.status == "FAKE") {
+        else if (status.status == FAKE) {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-danger d-inline'>Fake</div></Card.Title>
@@ -38,7 +39,7 @@ const Status = (props) => {
                 </>
             );
         }
-        else if (status.status == "UNCERTAIN") {
+        else if (status.status == UNCERTAIN) {
             return(
                 <>
                     <Card.Title>Status: <div className='fw-bold text-warning d-inline'>Uncertain</div></Card.Title>

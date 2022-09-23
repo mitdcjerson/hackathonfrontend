@@ -3,6 +3,7 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Status from './Status';
+import { FACTS, FAKE, UNCERTAIN } from "../constants";
 
 function Home() {
   const [ topic, setTopic ] = useState("");
@@ -37,17 +38,17 @@ function Home() {
 
   const renderStatus = (status) => {
     
-    if (status.status === "UNCERTAIN") {
+    if (status.status === UNCERTAIN) {
       return (
         <Status stat={status}/>
       )
     }
-    else if (status.status ==="FACT") {
+    else if (status.status === FACTS) {
       return (
         <Status stat={status}/>
       )
     }
-    else if (status.status === "FAKE") {
+    else if (status.status === FAKE) {
       return (
         <Status stat={status}/>
       )
