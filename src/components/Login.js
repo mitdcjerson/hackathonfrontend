@@ -55,11 +55,6 @@ function Login(props) {
             {
                 props.isLoggedIn ? <Navigate to="/contribute" replace /> : ""
             }
-            {
-                isError ? <Alert className="mx-auto" variant="warning" onClose={() => setError(false)} dismissible>
-                    <p>Login failed. Please try again.</p>
-                </Alert> : ""
-            }
              
             <Container>
                 <Row>
@@ -92,6 +87,13 @@ function Login(props) {
                             </Form>
                         </Card.Body>
                     </Card>
+
+                    {
+                        isError ? <Alert className="mt-3" variant="danger" onClose={() => setError(false)} dismissible>
+                            <p>Login failed. Please try again.</p>
+                        </Alert> : ""
+                    }
+
                     </Col>
                 </Row>
             </Container>
